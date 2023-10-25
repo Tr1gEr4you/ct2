@@ -1,46 +1,36 @@
 import random
 
-# Получение случайного слова из списка
 def get_word():
     word_list = ["олень", "слон", "жираф", "кенгуру", "тигр", "леопард", "зебра"]
     return random.choice(word_list)
 
-# Создание таблицы с отображением угаданных букв
 def create_table(word):
     return ["\u25A0" for _ in word]
 
-# Получение количества "жизней"
 def get_lives(word):
     return len(word)
 
-# Проверка, жив ли игрок (остались ли "жизни")
 def is_alive(lives):
     return lives > 0
 
-# Отображение текущей таблицы с угаданными буквами
 def show_table(table):
     display = " ".join(table)
     print(display)
 
-# Получение ответа от игрока (буквы или слова)
 def get_player_input():
     return input("Угадайте букву или введите слово целиком: ").lower()
 
-# Проверка, является ли ответ правильным словом
 def is_word_correct(word, answer):
     return word == answer
 
-# Проверка, является ли буква правильной
 def is_letter_correct(word, letter):
     return letter in word
 
-# Обновление таблицы с угаданными буквами
 def update_table(word, table, letter):
     for i, char in enumerate(word):
         if char == letter:
             table[i] = letter
 
-# Основная логика игры
 def play_hangman():
     word = get_word()
     table = create_table(word)
